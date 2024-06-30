@@ -3,3 +3,45 @@
     padding: 0;
     box-sizing: border-box;
   }
+
+  body { 
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: 
+        linear-gradient(
+          to bottom, 
+          #414141 50%,
+          #454545 50%
+        );
+  }
+
+  .app { 
+    width: 300px;
+    height: max-content;
+    min-height: 300px;
+    background-color: white;
+    border-radius: 30px;
+    box-shadow: 0 30px 50px #555355 ;
+    padding: 30px;
+  }
+
+  .app form {
+    border:  1px solid #555355;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 30px;
+  }
+
+  .app form input,
+  .app form button  {
+    border: none;
+    background: transparent;
+    outline: none;
+    padding: 10px;
+  }
+
+  .app form i {
+    opacity: 0.7;
+  }
