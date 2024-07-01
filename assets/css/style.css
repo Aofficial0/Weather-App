@@ -26,7 +26,12 @@
   .btn i {
     padding: 10px 25px 10px 25px;
   }
-  
+
+  @media screen and (max-width: 767px) {
+    #github {
+      display: none;
+    }
+  }  
     /* app background and skeleton */
   .app { 
     width: 300px;
