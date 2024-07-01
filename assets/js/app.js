@@ -1,12 +1,12 @@
 // get all the html needed for the api  by ID
 
-let searchValue = document.getElementById('location');
-let city = document.getElementById('city');
-let temperature = document.getElementById('temperature');
-let description = document.getElementById('outlook');
-let clouds = document.getElementById('clouds');
-let humidity = document.getElementById('humidity');
-let pressure = document.getElementById('pressure');
+const searchValue = document.getElementById('location');
+const city = document.getElementById('city');
+const temperature = document.getElementById('temperature');
+const description = document.getElementById('outlook');
+const clouds = document.getElementById('clouds');
+const humidity = document.getElementById('humidity');
+const pressure = document.getElementById('pressure');
 // event handler for the form 
 let form = document.querySelector('form');
 form.addEventListener('submit', (event) => {
@@ -40,6 +40,10 @@ const searchWeather = () => {
             temperature.querySelector('img').src = 'https://openweathermap.org/img/wn/'+data.weather[0].icon+'@2x.png';
             // updated the temperature itself  
             temperature.querySelector('figcaption span').innerText = data.main.temp;
+            //Update Cloud Coverage
+            // clouds.querySelector('span #clouds').innerContent = data.clouds.all;
+
+
         }
     })
 }
