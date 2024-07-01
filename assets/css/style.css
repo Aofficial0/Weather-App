@@ -79,6 +79,7 @@
     padding: 10px 0 30px;
   }
 
+  /* the list of info styling  */
   .app ul {
     list-style: none;
     display: grid;
@@ -88,7 +89,7 @@
   }
 
   .app li {
-    background-color: yellowgreen;
+    background-color: #313C46;
     border-radius: 10px;
     color: white;
     padding: 20px 10px;
@@ -97,4 +98,19 @@
       transparent 50%,
       #0004 50%
     );
+    font-weight: bold;
+    font-size: small;
+  }
+  .app li i {
+    font-size: 2em;
+    display: block!important;
+    margin: 20px 0;
+  }
+
+    /* change colours of each list item  */
+  .app li:nth-child(2){
+    background-color:rgb(178, 178, 247)  ;
+  }
+  .app li:nth-child(3){
+    background-color: rgb(60, 60, 248) ;
   }
