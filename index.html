@@ -13,6 +13,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 <body>
+    
+    <!-- app body  -->
+
     <div class="app">
         <form action="">
             <input type="text">
@@ -23,10 +26,11 @@
 
         <section class="result">
             <figure class="name">
+                <!-- flag api for the flags  -->
                 <figcaption>London</figcaption>
             <img src="https://flagsapi.com/GB/shiny/32.png" alt="flag">
         </figure>
-
+                <!-- using the open weather icons  -->
         <figure class="temp">
             <img src="https://openweathermap.org/img/wn/10d@2x.png" alt="">
             <figcaption>
@@ -35,6 +39,7 @@
             </figcaption>
         </figure>
 
+        <!-- the description of the weather per city  -->
         <p class="description">
             Overcast clouds
         </p>
@@ -42,21 +47,23 @@
         <ul>
             <li>
                 <span>Clouds</span>
+                <i class="fa-solid fa-cloud"></i>
                 <span>100%</span>
             </li>
             <li>
                 <span>Humidity</span>
-                <span></span>
+                <i class="fa-solid fa-droplet"></i>
+                <span>20%</span>
             </li>
             <li>
                 <span>Pressure</span>
-                <span></span>
+                <i class="fa-solid fa-gauge"></i>
+                <span>1001</span>hPa
             </li>
         </ul>
-
         </section>
     </div>
-    <p>Hello!</p>
+    
     
 
 <script src="assets/js/script.js"></script>

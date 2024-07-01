@@ -1,9 +1,11 @@
+/* universal selector */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
   }
 
+  /* app body css and layout */
   body { 
     min-height: 100vh;
     display: flex;
@@ -16,7 +18,8 @@
           #454545 50%
         );
   }
-
+  
+    /* app background and skeleton */
   .app { 
     width: 300px;
     height: max-content;
@@ -27,6 +30,7 @@
     padding: 30px;
   }
 
+   /* form styling  */
   .app form {
     border:  1px solid #555355;
     display: flex;
@@ -44,4 +48,53 @@
 
   .app form i {
     opacity: 0.7;
+  }
+  /* results and description styling  */
+  .app .result {
+    padding-top: 20px;
+    text-align: center;
+  }
+
+  .app .result .name {
+    font-weight: bold;
+    font-size: large;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .app .temp img {
+    width: 150px;
+    filter: drop-shadow(
+      0 10px 150px #000
+    );
+  }
+
+  .app .temp figcaption{
+    font-size: 3em;
+  }
+
+  .app .description {
+    padding: 10px 0 30px;
+  }
+
+  .app ul {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    padding-left: 0;
+  }
+
+  .app li {
+    background-color: yellowgreen;
+    border-radius: 10px;
+    color: white;
+    padding: 20px 10px;
+    background-image: linear-gradient(
+      to bottom, 
+      transparent 50%,
+      #0004 50%
+    );
   }
