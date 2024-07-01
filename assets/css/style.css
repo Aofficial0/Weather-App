@@ -11,12 +11,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: 
-        linear-gradient(
-          to bottom, 
-          #414141 50%,
-          #454545 50%
-        );
+    background-image: url("../images/sunny_scaled.jpg");  
   }
   
     /* app background and skeleton */
