@@ -7,10 +7,17 @@ const apiCallType = "weather"; //Current weather, Change to "forecast" for 5 day
 
 const apiUrl = `https://api.openweathermap.org/data/2.5/${apiCallType}?q=${searchCity}&appid=${apiKey}&units=${units}`;
 
+/**
+ * Constants for search string 
+ * button name and event listener.
+ */
 const searchCity = document.getElementById("location");
 const buttonSearch = document.getElementById("get-weather");
 buttonSearch.addEventListener('click', handleClick);
 
+/**
+ * Constants for send HTML elements
+ */
 const temperature = document.getElementById("temp");
 const weather = document.getElementById("outlook");
 
@@ -21,10 +28,14 @@ const weather = document.getElementById("outlook");
 //         console.log(object);
 //     });
 
-
+/**
+* This function parses the location entry and returns the requested data.
+* Error handling not yet implemented.
+*/
 function handleClick() {
     const cityInput = searchCity.value;
     //error /error catch for searchCity.innerText = "";
 
 
 }
+
