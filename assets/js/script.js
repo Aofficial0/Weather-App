@@ -3,7 +3,7 @@
 const apiKey = "ddcaa7c9ad8c545d308663b61cde1942";
 
 const units = "metric"; //can use a selector no units = Kelvin, &units=metric = centigrade, &units=imperial = fahrenheit
-const apiCallType = "forecast"; //current "weather", "forecast" for 5 day forecast
+const apiCallType = "forecast"; //"weather" for current data, "forecast" for 5 day forecast
 
 // const apiUrl = `https://api.openweathermap.org/data/2.5/${apiCallType}?q=${searchCity}&appid=${apiKey}&units=${units}`;
 
