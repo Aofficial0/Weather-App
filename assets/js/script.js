@@ -1,3 +1,4 @@
 "use strict";
 
-function test();
+
+1+2
