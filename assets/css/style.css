@@ -9,7 +9,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: 
+    background-image: url("../images/sunny_scaled.jpg");
         linear-gradient(
           to bottom, 
           #414141 50%,
