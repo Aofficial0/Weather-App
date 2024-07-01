@@ -18,8 +18,8 @@
 
     <div class="app">
         <form action="">
-            <input type="text">
-            <button>
+            <input type="text" id="location" placeholder="Please enter a city name">
+            <button id="get-weather">
                 <i class="fa-solid fa-magnifying-glass"></i>
             </button>
         </form>
@@ -34,13 +34,13 @@
         <figure class="temp">
             <img src="https://openweathermap.org/img/wn/10d@2x.png" alt="">
             <figcaption>
-                <span>19</span>
+                <span id="temp">19</span>
                 <sup>o</sup>
             </figcaption>
         </figure>
 
         <!-- the description of the weather per city  -->
-        <p class="description">
+        <p class="description" id="outlook">
             Overcast clouds
         </p>
 
