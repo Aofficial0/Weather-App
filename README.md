@@ -18,3 +18,21 @@
 
 # Error feature
 An error notification mechanism handles instances where an invalid or incorrect city/country is entered. This mechanism employs a subtle animation to clear the input from the search bar by shaking off the incorrect city/country, maintaining a user-friendly experience.
+
+# UX/UI
+This app is presented as user focused presenting the relevant information without cluttering the interface. This ensures a seamless user experience wuthout overwhelming the user with too much information or design.
+
+# User Stories
+As a user I want to navigate the weather app seamlessly.
+As a user I want to find information on any city/country of my choice without waiting for a long loading time.
+As a user I want accurate forecast information to plan my day/week around.
+As a user I want simple and easy to read information, ensuring i am not overwhelmed.
+
+# Testing Section
+Image here
+
+This project prioritizes testing throughout to ensure an easy usage for the users through code functiinality. We did this by communicating any issues during the coding process to each other and getting on conference calls to brainstorm solutions to existing problems until they are resolved. 
+Use of resources such as diffchecker and W3C Validator to fix problems in code ensured that no time was wasted unnecessarily. 
+
+# Deployment
+Our development workflow involved consistently pushing commits to the repository after completing each feature. Once a feature was finished, we would delete the corresponding branch. Deployment involved navigating to the main page of the GitHub repository, then proceeding to the settings page. There, we would locate the deploy button, select the "main" branch, and click the save button to ensure all changes were persisted. This early deployment strategy allowed us to identify and address any potential issues that might not be apparent in the preview environment, granting us time for necessary fixes before the final release.
