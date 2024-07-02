@@ -9,10 +9,11 @@
 # FEATURES
 
 # Search Bar
- Image here
+ "../images/search bar.png"
  The application boasts a meticulously designed search bar, empowering users to effortlessly locate weather data for any desired city. This intuitive functionality serves as the cornerstone of a seamless user experience within the app.
 
 # The Home Page
+"../images/home page.png"
  The home page displays the weather data based on the country/city entered by the user. This will also show the humidity, cloud and pressure level for that day as well as a five day weather forecast for the weekdays. 
 
 # Backgroundcolor Change
@@ -22,6 +23,7 @@
 An error notification mechanism handles instances where an invalid or incorrect city/country is entered. This mechanism employs a subtle animation to clear the input from the search bar by shaking off the incorrect city/country, maintaining a user-friendly experience.
 
 # Flag 
+"../images/flag feature.png"
 We added a little detail to the weather app that shows the corresponding flag when any country is entered into the search bar. 
 
 # UX/UI
