@@ -44,6 +44,7 @@ const getWeatherDetails = (weatherDescription) => {
         case 'shower rain':
         case 'rain':
         case 'thunderstorm':
+        case 'light rain':
             return {
                 backgroundImage: 'assets/images/rain_scaled.jpg',
                 description: 'Rainy'
