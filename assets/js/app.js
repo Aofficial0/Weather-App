@@ -7,6 +7,7 @@ let description = document.getElementById('outlook');
 let clouds = document.getElementById('clouds');
 let humidity = document.getElementById('humidity');
 let pressure = document.getElementById('pressure');
+
 // event handler for the form 
 let form = document.querySelector('form');
 form.addEventListener('submit', (event) => {
@@ -40,6 +41,9 @@ const searchWeather = () => {
             temperature.querySelector('img').src = 'https://openweathermap.org/img/wn/'+data.weather[0].icon+'@2x.png';
              //updated the temperature itself  
             temperature.querySelector('figcaption span').innerText = data.main.temp;
+            // update the temperature description
+            description.innerText = data.weather[0].description;
+
             // Update humidity
             humidity.textContent = data.main.humidity + '%';
 
