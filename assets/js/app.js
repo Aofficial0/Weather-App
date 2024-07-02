@@ -42,7 +42,7 @@ const getWeatherDetails = (weatherDescription) => {
                 description: 'Cloudy'
             };
         case 'shower rain':
-        case 'rain':
+        case 'rainy':
         case 'thunderstorm':
         case 'light rain':
             return {
