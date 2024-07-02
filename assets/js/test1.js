@@ -67,16 +67,16 @@ const searchWeather = () => {
                 const dayHumid = data.list[w].main.humidity;
                 const dayClouds = data.list[w].clouds.all;                
                 // Update daily temp 
-                accTmp.textContent = dayTemp;
+                accTmp.innerText = dayTemp;
                 // Update daily humidity
-                accHmd.textContent = dayHumid;
+                accHmd.innerText = dayHumid;
                 // Update daily cloud percentage
-                accCld.textContent = dayClouds;
+                accCld.innerText = dayClouds;
                 // Update weekday
                 const timeStamp = object.list[w].dt;
                 const dateTime = new Date(timeStamp * 1000);
                 const dayOfWeek = dateTime.toLocaleDateString("en-GB", { weekday: 'long' });
-                accDay.textContent = dayOfWeek;
+                accDay.innerText = dayOfWeek;
 
             }
 
