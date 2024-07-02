@@ -25,29 +25,40 @@ let key = 'e6d14a5b27f7e8a75ce9753d6de7a74b';
 let url = 'https://api.openweathermap.org/data/2.5/weather?units=metric&appid=' + key;
 
 
-// Function to map weather conditions to background images
-const getBackgroundImage = (weatherDescription) => {
+// Function to map weather conditions to background images and descriptions
+const getWeatherDetails = (weatherDescription) => {
     switch(weatherDescription) {
         case 'clear sky':
-            return 'assets/images/sunny_scaled.jpg';
+            return {
+                backgroundImage: 'assets/images/sunny_scaled.jpg',
+                description: 'Clear sky'
+            };
         case 'few clouds':
-            return 'assets/images/cloudyish.jpg';
         case 'scattered clouds':
-            return 'assets/images/cloudyish.jpg';
         case 'broken clouds':
-            return 'assets/images/cloudyish.jpg';
+        case 'overcast clouds':
+            return {
+                backgroundImage: 'assets/images/cloudy_scaled.jpg',
+                description: 'Cloudy'
+            };
         case 'shower rain':
-            return 'assets/images/rain_scaled.jpg';
         case 'rain':
-            return 'assets/images/rain_scaled.jpg';
         case 'thunderstorm':
-            return 'assets/images/rain_scaled.jpg';
+            return {
+                backgroundImage: 'assets/images/rain_scaled.jpg',
+                description: 'Rainy'
+            };
         case 'snow':
-            return 'assets/images/snow_scaled.jpg';
-        case 'Overcast clouds':
-            return 'assets/images/cloudyish.jpg';
+        case 'mist':
+            return {
+                backgroundImage: 'assets/images/snow_scaled.jpg',
+                description: 'Snowy'
+            };
         default:
-            return 'assets/images/cloudyish.jpg';
+            return {
+                backgroundImage: 'assets/images/default_weather.jpg',
+                description: 'Unknown weather'
+            };
     }
 }
 
@@ -69,8 +80,11 @@ const searchWeather = () => {
              //updated the temperature itself  
             temperature.querySelector('figcaption span').innerText = data.main.temp;
             // update the temperature description
-            let bgImage = getBackgroundImage(data.weather[0].description);
-            document.body.style.backgroundImage = 'url(' + bgImage + ')';
+            let weatherDetails = getWeatherDetails(data.weather[0].description);
+            // Update background image
+            document.body.style.backgroundImage = 'url(' + weatherDetails.backgroundImage + ')';
+            // Update description text
+            description.innerText = weatherDetails.description;
             // Update humidity
             humidity.textContent = data.main.humidity;
 
