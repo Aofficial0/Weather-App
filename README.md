@@ -31,7 +31,8 @@ As a user I want accurate forecast information to plan my day/week around.
 As a user I want simple and easy to read information, ensuring i am not overwhelmed.
 
 # Testing Section
-Image here
+![Screenshot 2024-06-06 at 13 14 38](https://github.com/craigallendev/prevent-awareness/assets/169143525/e6b4e54a-a5b3-4ade-a26e-21aa554c2b20)
+![Screenshot 2024-06-06 at 13 18 38](https://github.com/craigallendev/prevent-awareness/assets/169143525/01bccc87-fe27-4ec8-b1bf-baa9cb54c8d0)
 
 This project prioritizes testing throughout to ensure an easy usage for the users through code functiinality. We did this by communicating any issues during the coding process to each other and getting on conference calls to brainstorm solutions to existing problems until they are resolved. 
 Use of resources such as diffchecker and W3C Validator to fix problems in code ensured that no time was wasted unnecessarily. 
@@ -41,4 +42,5 @@ Our development workflow involved consistently pushing commits to the repository
 
 # Citation
 The use of the OpenWeather Api to pull weather information into our weather app. 
-The use of stackoverflow to get the 
+The use of stackoverflow for some functions and css
+The SME session where Kevin went through the Api process. 
