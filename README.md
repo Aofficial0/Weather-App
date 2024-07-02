@@ -21,6 +21,9 @@
 # Error feature
 An error notification mechanism handles instances where an invalid or incorrect city/country is entered. This mechanism employs a subtle animation to clear the input from the search bar by shaking off the incorrect city/country, maintaining a user-friendly experience.
 
+# Flag 
+We added a little detail to the weather app that shows the corresponding flag when any country is entered into the search bar. 
+
 # UX/UI
 This app is presented as user focused presenting the relevant information without cluttering the interface. This ensures a seamless user experience wuthout overwhelming the user with too much information or design.
 
