@@ -65,7 +65,11 @@ const searchWeather = () => {
         searchValue.value = '' ;
     })
 }
-// for when a user enter the app for first time should find london info displayed 
+// for when a user enter the app for first time should find london data displayed 
 
-
+const initApp = () => {
+    searchValue.value = "London"
+    searchWeather();
+}
+initApp();
 
