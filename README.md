@@ -1,3 +1,5 @@
+![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+
 # Stormy Weather 
  This is a weather App that prioritizes user experience and functionality enabling users to extract the core information they are looking for at a glance. 
 
@@ -36,3 +38,7 @@ Use of resources such as diffchecker and W3C Validator to fix problems in code e
 
 # Deployment
 Our development workflow involved consistently pushing commits to the repository after completing each feature. Once a feature was finished, we would delete the corresponding branch. Deployment involved navigating to the main page of the GitHub repository, then proceeding to the settings page. There, we would locate the deploy button, select the "main" branch, and click the save button to ensure all changes were persisted. This early deployment strategy allowed us to identify and address any potential issues that might not be apparent in the preview environment, granting us time for necessary fixes before the final release.
+
+# Citation
+The use of the OpenWeather Api to pull weather information into our weather app. 
+The use of stackoverflow to get the 
