@@ -38,8 +38,19 @@ const searchWeather = () => {
             city.querySelector('img').src = 'https://flagsapi.com/' + data.sys.country + '/shiny/32.png';
             //update the temperature icon 
             temperature.querySelector('img').src = 'https://openweathermap.org/img/wn/'+data.weather[0].icon+'@2x.png';
-            // updated the temperature itself  
+             //updated the temperature itself  
             temperature.querySelector('figcaption span').innerText = data.main.temp;
+            // Update humidity
+            humidity.textContent = data.main.humidity + '%';
+
+        // Update pressure (assuming pressure is in hPa)
+           pressure.textContent = data.main.pressure + ' hPa';
+
+        // Update cloud percentage
+           clouds.textContent = data.clouds.all + '%';
         }
     })
 }
+
+
+
