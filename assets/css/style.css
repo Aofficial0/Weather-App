@@ -130,7 +130,7 @@
     background-color: rgb(60, 60, 248) ;
   }
 
-
+  /* error effect moving at random values  */
 main.error {
   animation: errorEffect 0.3s linear 1;
 }
