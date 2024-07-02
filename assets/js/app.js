@@ -7,7 +7,7 @@ let description = document.getElementById('outlook');
 let clouds = document.getElementById('clouds');
 let humidity = document.getElementById('humidity');
 let pressure = document.getElementById('pressure');
-
+let main = document.querySelector('main');
 // event handler for the form 
 let form = document.querySelector('form');
 form.addEventListener('submit', (event) => {
@@ -43,18 +43,29 @@ const searchWeather = () => {
             temperature.querySelector('figcaption span').innerText = data.main.temp;
             // update the temperature description
             description.innerText = data.weather[0].description;
-
             // Update humidity
-            humidity.textContent = data.main.humidity + '%';
+            humidity.textContent = data.main.humidity;
 
-        // Update pressure (assuming pressure is in hPa)
-           pressure.textContent = data.main.pressure + ' hPa';
+            // Update pressure (assuming pressure is in hPa)
+            pressure.textContent = data.main.pressure;
 
-        // Update cloud percentage
-           clouds.textContent = data.clouds.all + '%';
+            // Update cloud percentage
+            clouds.textContent = data.clouds.all ;
+        } else {
+            // false if cod != 200
+            //run the error effect
+            main.classList.add('error');
+            // set time out so after 1 sec main clear the error and if new error came it runs the animation again 
+            setTimeout(() => {
+                main.classList.remove('error');
+            }, 1000);
         }
+
+        // clear input contant 
+        searchValue.value = '' ;
     })
 }
+// for when a user enter the app for first time should find london info displayed 
 
 
 

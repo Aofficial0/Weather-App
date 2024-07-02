@@ -131,5 +131,24 @@
   }
 
 
+main.error {
+  animation: errorEffect 0.3s linear 1;
+}
+@keyframes errorEffect {
+  0%{
+    transform: translate(15px , 10px);
+  }
+  25%{
+    transform: translate(-5px , 0px);
+  }
+  50%{
+    transform: translate(8px , 3px);
+  }
+  75%{
+    transform: translate(-3px , 5px);
+  }
+100%{
+  transform: translate(0px , 0px);
+}
 
-
+}
