@@ -24,6 +24,33 @@ let key = 'e6d14a5b27f7e8a75ce9753d6de7a74b';
 // Base URL for the OpenWeatherMap API, with units set to metric
 let url = 'https://api.openweathermap.org/data/2.5/weather?units=metric&appid=' + key;
 
+
+// Function to map weather conditions to background images
+const getBackgroundImage = (weatherDescription) => {
+    switch(weatherDescription) {
+        case 'clear sky':
+            return 'assets/images/sunny_scaled.jpg';
+        case 'few clouds':
+            return 'assets/images/cloudyish.jpg';
+        case 'scattered clouds':
+            return 'assets/images/cloudyish.jpg';
+        case 'broken clouds':
+            return 'assets/images/cloudyish.jpg';
+        case 'shower rain':
+            return 'assets/images/rain_scaled.jpg';
+        case 'rain':
+            return 'assets/images/rain_scaled.jpg';
+        case 'thunderstorm':
+            return 'assets/images/rain_scaled.jpg';
+        case 'snow':
+            return 'assets/images/snow_scaled.jpg';
+        case 'Overcast clouds':
+            return 'assets/images/cloudyish.jpg';
+        default:
+            return 'assets/images/cloudyish.jpg';
+    }
+}
+
 // Function to search for weather data based on user input
 const searchWeather = () => {
     // Fetch weather data from the API, appending the user-provided search value to the URL
@@ -42,7 +69,8 @@ const searchWeather = () => {
              //updated the temperature itself  
             temperature.querySelector('figcaption span').innerText = data.main.temp;
             // update the temperature description
-            description.innerText = data.weather[0].description;
+            let bgImage = getBackgroundImage(data.weather[0].description);
+            document.body.style.backgroundImage = 'url(' + bgImage + ')';
             // Update humidity
             humidity.textContent = data.main.humidity;
 
