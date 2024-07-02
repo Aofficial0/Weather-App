@@ -1,12 +1,13 @@
 // get all the html needed for the api  by ID
 
-const searchValue = document.getElementById('location');
-const city = document.getElementById('city');
-const temperature = document.getElementById('temperature');
-const description = document.getElementById('outlook');
-const clouds = document.getElementById('clouds');
-const humidity = document.getElementById('humidity');
-const pressure = document.getElementById('pressure');
+let searchValue = document.getElementById('location');
+let city = document.getElementById('city');
+let temperature = document.getElementById('temperature');
+let description = document.getElementById('outlook');
+let clouds = document.getElementById('clouds');
+let humidity = document.getElementById('humidity');
+let pressure = document.getElementById('pressure');
+let main = document.querySelector('main');
 // event handler for the form 
 let form = document.querySelector('form');
 form.addEventListener('submit', (event) => {
@@ -38,12 +39,37 @@ const searchWeather = () => {
             city.querySelector('img').src = 'https://flagsapi.com/' + data.sys.country + '/shiny/32.png';
             //update the temperature icon 
             temperature.querySelector('img').src = 'https://openweathermap.org/img/wn/'+data.weather[0].icon+'@2x.png';
-            // updated the temperature itself  
+             //updated the temperature itself  
             temperature.querySelector('figcaption span').innerText = data.main.temp;
-            //Update Cloud Coverage
-            // clouds.querySelector('span #clouds').innerContent = data.clouds.all;
+            // update the temperature description
+            description.innerText = data.weather[0].description;
+            // Update humidity
+            humidity.textContent = data.main.humidity;
 
+            // Update pressure (assuming pressure is in hPa)
+            pressure.textContent = data.main.pressure;
 
+            // Update cloud percentage
+            clouds.textContent = data.clouds.all ;
+        } else {
+            // false if cod != 200
+            //run the error effect
+            main.classList.add('error');
+            // set time out so after 1 sec main clear the error and if new error came it runs the animation again 
+            setTimeout(() => {
+                main.classList.remove('error');
+            }, 1000);
         }
+
+        // clear input contant 
+        searchValue.value = '' ;
     })
 }
+// for when a user enter the app for first time should find london data displayed 
+
+const initApp = () => {
+    searchValue.value = "London"
+    searchWeather();
+}
+initApp();
+
