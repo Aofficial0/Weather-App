@@ -50,5 +50,7 @@ Our development workflow involved consistently pushing commits to the repository
 
 # Citation
 The use of the OpenWeather Api to pull weather information into our weather app. 
+
 The use of stackoverflow for some functions and css
+
 The SME session where Kevin went through the Api process. 
