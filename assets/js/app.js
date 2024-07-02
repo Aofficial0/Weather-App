@@ -1,13 +1,13 @@
 // get all the html needed for the api  by ID
 
-let searchValue = document.getElementById('location');
-let city = document.getElementById('city');
-let temperature = document.getElementById('temperature');
-let description = document.getElementById('outlook');
-let clouds = document.getElementById('clouds');
-let humidity = document.getElementById('humidity');
-let pressure = document.getElementById('pressure');
-let main = document.querySelector('main');
+const searchValue = document.getElementById('location');
+const city = document.getElementById('city');
+const temperature = document.getElementById('temperature');
+const description = document.getElementById('outlook');
+const clouds = document.getElementById('clouds');
+const humidity = document.getElementById('humidity');
+const pressure = document.getElementById('pressure');
+const main = document.querySelector('main');
 // event handler for the form 
 let form = document.querySelector('form');
 form.addEventListener('submit', (event) => {
