@@ -64,6 +64,9 @@
     #github {
       display: none;
     }
+    #openweather {
+      display: none;
+    }
   }  
     /* app background and skeleton */
   .app { 
