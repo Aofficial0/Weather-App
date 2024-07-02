@@ -15,3 +15,6 @@
 
 # Backgroundcolor Change
  Another feature is for the background color to change based on the weatherforecast for the day. For example, if the weather is sunny the background will display the corresponding image, likewise for any other weather forecast. 
+
+# Error feature
+An error notification mechanism handles instances where an invalid or incorrect city/country is entered. This mechanism employs a subtle animation to clear the input from the search bar by shaking off the incorrect city/country, maintaining a user-friendly experience.
