@@ -8,7 +8,7 @@ const clouds = document.getElementById('clouds');
 const humidity = document.getElementById('humidity');
 const pressure = document.getElementById('pressure');
 const main = document.querySelector('main');
-const forecast = document.getElementById("five-day"); //5 day forecast to html
+const forecast = document.getElementById("fiveday"); //5 day forecast to html
 // event handler for the form 
 let form = document.querySelector('form');
 form.addEventListener('submit', (event) => {
@@ -53,27 +53,31 @@ const searchWeather = () => {
             // Update cloud percentage
             clouds.textContent = data.list[0].clouds.all;
 
-            for (let w = 7; w < 40; w+=8) {  // 24 hour forecast parser
+            /**
+             * 24 hour forecast parser
+             */
+            for (let w = 7; w < 40; w+=8) { 
+                const dayData = data.list[w] ;
                 /**
                 * Consts for parser
                 */
-                const dayTemp = data.list[w].main.temp;
-                const dayHumid = data.list[w].main.humidity;
-                const dayClouds = data.list[w].clouds.all;
+                const dayTemp = dayData.main.temp;
+                const dayHumid = dayData.main.humidity;
+                const dayClouds = dayData.clouds.all;
                 // Generate day
-                const timeStamp = object.list[w].dt;
+                const timeStamp = dayData.dt;
                 const dateTime = new Date(timeStamp * 1000);
                 const dayOfWeek = dateTime.toLocaleDateString("en-GB", { weekday: 'long' });
 
-                const fiveDay = `
-                <div class="col>
-                    <h4>${dayOfWeek}</h4>
-                    <h4>${dayTemp}</h4>
-                    <h5>${dayHumid}</h5>
-                    <h5>${dayClouds}</h5>
+                const forPop = `
+                <div class="col">
+                    <h4 id="dow">${dayOfWeek}</h4>
+                    <h4 id="dat">${dayTemp}<sup>o</sup></h4>
+                    <h5 id="dah">${dayHumid}<span>%</span></h5>
+                    <h5 id="dac">${dayClouds}<span>%</span></h5>
                 </div>
                 `;
-                forecast.innerHTML += fiveDay;
+                forecast.innerHTML += forPop;
             }
                 /**
                 * Consts for HTML pipe
