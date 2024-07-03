@@ -121,12 +121,12 @@ const searchWeather = () => {
                 const dayOfWeek = dateTime.toLocaleDateString("en-GB", { weekday: 'long' });
 
                 const forPop = `
-                <div class="row">
-                    <div class="column">
-                        <h4 id="dow">${dayOfWeek}</h4>
-                        <h4 id="dat">${dayTemp}<sup>o</sup></h4>
-                        <h5 id="dah">${dayHumid}<span>%</span></h5>
-                        <h5 id="dac">${dayClouds}<span>%</span></h5>
+                <div class="forecast-item">
+                     <h4 class="centered" id="dow">${dayOfWeek}</h4>
+                     <h4 class="centered" id="dat">${dayTemp}<sup>o</sup></h4>
+                    <div class="humidity-clouds-row centered">
+                         <h5 class="centered" id="dac">${dayClouds} <span>%</span> <i class="fa-solid fa-cloud"></i></h5>
+                         <h5 class="centered" id="dah">${dayHumid}<span>%</span> <i class="fa-solid fa-droplet"></i></h5>
                     </div>
                 </div>
                 `;
