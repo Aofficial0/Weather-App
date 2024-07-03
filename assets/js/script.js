@@ -10,6 +10,9 @@ const humidity = document.getElementById('humidity');
 const pressure = document.getElementById('pressure');
 const main = document.querySelector('main');
 const forecast = document.getElementById("fiveday"); //5 day forecast to html
+
+
+
 // event handler for the form 
 let form = document.querySelector('form');
 form.addEventListener('submit', (event) => {
@@ -19,55 +22,11 @@ form.addEventListener('submit', (event) => {
     }
 })
 
-
 // API key for OpenWeatherMap
 const key = 'e6d14a5b27f7e8a75ce9753d6de7a74b';
 
 // Base URL for the OpenWeatherMap API, with units set to metric
 const url = 'https://api.openweathermap.org/data/2.5/forecast?units=metric&appid=' + key;
-
-
-// Function to map weather conditions to background images and descriptions
-const getWeatherDetails = (weatherDescription) => {
-    switch(weatherDescription) {
-        case 'clear sky':
-            return {
-                backgroundImage: 'assets/images/sunny_scaled.jpg',
-                description: 'Clear sky'
-            };
-        case 'few clouds':
-        case 'scattered clouds':
-        case 'broken clouds':
-        case 'overcast clouds':
-            return {
-                backgroundImage: 'assets/images/cloudy_scaled.jpg',
-                description: 'Cloudy'
-            };
-        case 'shower rain':
-        case 'rainy':
-        case 'thunderstorm':
-        case 'light rain':
-        case 'moderate rain':
-        case 'heavy intensity rain':
-            return {
-                backgroundImage: 'assets/images/rain_scaled.jpg',
-                description: 'Rainy'
-            };
-        case 'snow':
-        case 'mist':
-            return {
-                backgroundImage: 'assets/images/snow_scaled.jpg',
-                description: 'Snowy'
-            };
-        default:
-            return {
-                backgroundImage: 'assets/images/default_weather.jpg',
-                description: 'Unknown weather'
-            };
-    }
-}
-
-
 
 
 // Function to search for weather data based on user input
@@ -87,23 +46,35 @@ const searchWeather = () => {
             city.querySelector('img').src = 'https://flagsapi.com/' + data.city.country + '/shiny/32.png';
             //update the temperature icon 
             temperature.querySelector('img').src = 'https://openweathermap.org/img/wn/'+data.list[0].weather[0].icon+'@2x.png';
-             //updated the temperature itself  
-            temperature.querySelector('figcaption span').innerText = data.list[0].main.temp;
-            // update the temperature description
-            let weatherDetails = getWeatherDetails(data.list[0].weather[0].description);
+             // Update the temperature itself
+            let temp =  data.list[0].main.temp;
+            let roundTemp = Math.round(temp);
+            temperature.querySelector('figcaption span').innerText = roundTemp
+            // Update the weather description
+            description.textContent = data.list[0].weather[0].description;
+            //let weatherDetails = getWeatherDetails(data.list[0].weather[0].description);
             // Update background image
-            document.body.style.backgroundImage = 'url(' + weatherDetails.backgroundImage + ')';
+            // document.body.style.backgroundImage = 'url(' + weatherDetails.backgroundImage + ')';
             // Update description text
-            description.innerText = weatherDetails.description;
+            // description.innerText = weatherDetails.description;
             // Update humidity
             humidity.textContent = data.list[0].main.humidity;
-
             // Update pressure (assuming pressure is in hPa)
             pressure.textContent = data.list[0].main.pressure;
-
             // Update cloud percentage
             clouds.textContent = data.list[0].clouds.all;
-
+            // Set Weather descriptor for background links
+            const weatherDescriptor = data.list[0].weather[0].main;
+            //console.log(weatherDescriptor); // check weatherDescriptor output
+            if (weatherDescriptor === "Clear") {
+                document.body.style.backgroundImage = 'url("assets/images/sunny_scaled.jpg")';
+            } else if (weatherDescriptor === "Clouds") {
+                document.body.style.backgroundImage = 'url("assets/images/cloudy_scaled.jpg")';
+            } else if (weatherDescriptor === "Rain") {
+                document.body.style.backgroundImage = 'url("assets/images/rain_scaled.jpg")';
+            } else if (weatherDescriptor ==- "Snow") {
+                document.body.style.backgroundImage = 'url("assets/images/snow_scaled.jpg")';
+            }            
             /**
              * 24 hour forecast parser
              */
@@ -112,7 +83,10 @@ const searchWeather = () => {
                 /**
                 * Consts for parser
                 */
-                const dayTemp = dayData.main.temp;
+                let dtemp =  dayData.main.temp;
+                let droundTemp = Math.round(dtemp);
+                const dayTemp = droundTemp;
+
                 const dayHumid = dayData.main.humidity;
                 const dayClouds = dayData.clouds.all;
                 // Generate day
@@ -131,25 +105,7 @@ const searchWeather = () => {
                 </div>
                 `;
                 forecast.innerHTML += forPop;
-            }
-                /**
-                * Consts for HTML pipe
-                */              
-                // const accDay = document.getElementById('accordion-button');
-                // const accTmp = document.getElementById('temperaturestatus1');
-                // const accHmd = document.getElementById('humiditystatus1');
-                // const accCld = document.getElementById('cloudstate1');
-                           
-                          
-                // Update daily temp 
-                // accTmp.textContent = dayTemp;
-                // Update daily humidity
-                // accHmd.textContent = dayHumid;
-                // Update daily cloud percentage
-                // accCld.textContent = dayClouds;
-                //Update Day
-                // accDay.textContent = dayOfWeek;         
-                
+            }    
         } else {
             // false if cod != 200
             //run the error effect
@@ -163,7 +119,6 @@ const searchWeather = () => {
         searchValue.value = '' ;
     });
 }
-
 
 // for when a user enter the app for first time should find london data displayed 
 
