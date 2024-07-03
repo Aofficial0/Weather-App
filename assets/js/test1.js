@@ -54,18 +54,19 @@ const searchWeather = () => {
 
             for (let w = 7; w < 40; w+=8) {  // 24 hour forecast parser
                 /**
-                 * 
+                * Consts for parser
+                */
+                const dayTemp = data.list[w].main.temp;
+                const dayHumid = data.list[w].main.humidity;
+                const dayClouds = data.list[w].clouds.all;  
+                /**
+                 * Consts for HTML pipe
                  */              
                 const accDay = document.getElementById('accordion-button');
                 const accTmp = document.getElementById('temperaturestatus1');
                 const accHmd = document.getElementById('humiditystatus1');
                 const accCld = document.getElementById('cloudstate1');
-                /**
-                 * Consts for parser
-                 */
-                const dayTemp = data.list[w].main.temp;
-                const dayHumid = data.list[w].main.humidity;
-                const dayClouds = data.list[w].clouds.all;                
+              
                 // Update daily temp 
                 accTmp.textContent = dayTemp;
                 // Update daily humidity
