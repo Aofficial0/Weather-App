@@ -19,6 +19,9 @@
  The home page displays the weather data based on the country/city entered by the user. This will also show the humidity, cloud and pressure level for that day as well as a five day weather forecast for the weekdays. 
 
 # Backgroundcolor Change
+assets/images/Cloudy Background.png
+assets/images/Rainy Background.png
+
  Another feature is for the background color to change based on the weatherforecast for the day. For example, if the weather is sunny the background will display the corresponding image, likewise for any other weather forecast. 
 
 # Error feature
