@@ -127,6 +127,7 @@
     justify-content: center;
     align-items: center;
     gap: 10px;
+    font-size: 25px;
   }
 
   .app .temp img {
@@ -142,6 +143,7 @@
 
   .app .description {
     padding: 10px 0 30px;
+    text-transform: capitalize;
   }
 
   /* the list of info styling  */
