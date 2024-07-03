@@ -8,6 +8,7 @@ const clouds = document.getElementById('clouds');
 const humidity = document.getElementById('humidity');
 const pressure = document.getElementById('pressure');
 const main = document.querySelector('main');
+const forecast = document.getElementById("fiveday"); //5 day forecast to html
 // event handler for the form 
 let form = document.querySelector('form');
 form.addEventListener('submit', (event) => {
@@ -52,34 +53,50 @@ const searchWeather = () => {
             // Update cloud percentage
             clouds.textContent = data.list[0].clouds.all;
 
-            for (let w = 7; w < 40; w+=8) {  // 24 hour forecast parser
+            /**
+             * 24 hour forecast parser
+             */
+            for (let w = 7; w < 40; w+=8) { 
+                const dayData = data.list[w] ;
                 /**
-                 * 
-                 */              
-                const accDay = document.getElementById('accordion-button');
-                const accTmp = document.getElementById('temperaturestatus1');
-                const accHmd = document.getElementById('humiditystatus1');
-                const accCld = document.getElementById('cloudstate1');
-                /**
-                 * Consts for parser
-                 */
-                const dayTemp = data.list[w].main.temp;
-                const dayHumid = data.list[w].main.humidity;
-                const dayClouds = data.list[w].clouds.all;                
-                // Update daily temp 
-                accTmp.textContent = dayTemp;
-                // Update daily humidity
-                accHmd.textContent = dayHumid;
-                // Update daily cloud percentage
-                accCld.textContent = dayClouds;
-                // Update weekday
-                const timeStamp = object.list[w].dt;
+                * Consts for parser
+                */
+                const dayTemp = dayData.main.temp;
+                const dayHumid = dayData.main.humidity;
+                const dayClouds = dayData.clouds.all;
+                // Generate day
+                const timeStamp = dayData.dt;
                 const dateTime = new Date(timeStamp * 1000);
                 const dayOfWeek = dateTime.toLocaleDateString("en-GB", { weekday: 'long' });
-                accDay.textContent = dayOfWeek;
 
+                const forPop = `
+                <div class="col">
+                    <h4 id="dow">${dayOfWeek}</h4>
+                    <h4 id="dat">${dayTemp}<sup>o</sup></h4>
+                    <h5 id="dah">${dayHumid}<span>%</span></h5>
+                    <h5 id="dac">${dayClouds}<span>%</span></h5>
+                </div>
+                `;
+                forecast.innerHTML += forPop;
             }
-
+                /**
+                * Consts for HTML pipe
+                */              
+                // const accDay = document.getElementById('accordion-button');
+                // const accTmp = document.getElementById('temperaturestatus1');
+                // const accHmd = document.getElementById('humiditystatus1');
+                // const accCld = document.getElementById('cloudstate1');
+                           
+                          
+                // Update daily temp 
+                // accTmp.textContent = dayTemp;
+                // Update daily humidity
+                // accHmd.textContent = dayHumid;
+                // Update daily cloud percentage
+                // accCld.textContent = dayClouds;
+                //Update Day
+                // accDay.textContent = dayOfWeek;         
+                
         } else {
             // false if cod != 200
             //run the error effect
@@ -89,10 +106,9 @@ const searchWeather = () => {
                 main.classList.remove('error');
             }, 1000);
         }
-
         // clear input contant 
         searchValue.value = '' ;
-    })
+    });
 }
 // for when a user enter the app for first time should find london data displayed 
 
