@@ -1,54 +1,166 @@
 "use strict";
+// get all the html needed for the api  by ID
 
-const apiKey = "ddcaa7c9ad8c545d308663b61cde1942";
+const searchValue = document.getElementById('location');
+const city = document.getElementById('city');
+const temperature = document.getElementById('temperature');
+const description = document.getElementById('outlook');
+const clouds = document.getElementById('clouds');
+const humidity = document.getElementById('humidity');
+const pressure = document.getElementById('pressure');
+const main = document.querySelector('main');
+const forecast = document.getElementById("fiveday"); //5 day forecast to html
+// event handler for the form 
+let form = document.querySelector('form');
+form.addEventListener('submit', (event) => {
+    event.preventDefault();
+    if(searchValue.value != ''){
+        searchWeather();
+    }
+})
 
-const units = "metric"; //can use a selector no units = Kelvin, &units=metric = centigrade, &units=imperial = fahrenheit
-const apiCallType = "forecast"; //"weather" for current data, "forecast" for 5 day forecast
 
-// const apiUrl = `https://api.openweathermap.org/data/2.5/${apiCallType}?q=${searchCity}&appid=${apiKey}&units=${units}`;
+// API key for OpenWeatherMap
+const key = 'e6d14a5b27f7e8a75ce9753d6de7a74b';
 
-/**
- * Constants for search string 
- * button name and event listener.
- */
-const searchCity = document.getElementById("location");
-const buttonSearch = document.getElementById("get-weather");
-//buttonSearch.addEventListener('click', handleClick);
+// Base URL for the OpenWeatherMap API, with units set to metric
+const url = 'https://api.openweathermap.org/data/2.5/forecast?units=metric&appid=' + key;
 
-/**
- * Constants for send to HTML elements
-*/
-const temperature = document.getElementById("temp");
-const weather = document.getElementById("outlook");
-const cityName = document.getElementById("city-name");
- 
-// const apiUrl = `https://api.openweathermap.org/data/2.5/${apiCallType}?q=Bristol&appid=${apiKey}&units=${units}`;
-// fetch(apiUrl)                        //Connection Testing
-//     .then(function (response) {
-//         return response.json();
-//     }).then(function (object) {
-//         console.log(object);
-//     });
+// Function to search for weather data based on user input
+const searchWeather = () => {
+    // Clear Forecast
+    forecast.innerHTML = ""; 
+    // Fetch weather data from the API, appending the user-provided search value to the URL
+    fetch(url + '&q=' + searchValue.value)
+    .then(response => response.json()) // Parse the response as JSON
+    .then(data => {
+        console.log(data); // Log the response data for debugging
+        // If the API response is successful (status code 200)
+        if(data.cod == 200){
+            // Update the city name in the HTML
+            city.querySelector('figcaption').innerText = data.city.name;
+            // Update the city flag image based on the country code
+            city.querySelector('img').src = 'https://flagsapi.com/' + data.city.country + '/shiny/32.png';
+            //update the temperature icon 
+            temperature.querySelector('img').src = 'https://openweathermap.org/img/wn/'+data.list[0].weather[0].icon+'@2x.png';
+             //updated the temperature itself  
+            temperature.querySelector('figcaption span').innerText = data.list[0].main.temp;
+            // update the temperature description
+            description.innerText = data.list[0].weather[0].description;
+            // Update humidity
+            humidity.textContent = data.list[0].main.humidity;
 
-/**
-* This function parses the location entry and returns the requested data.
-* Error handling not yet implemented.
-*/
-// function handleClick() {
+            // Update pressure (assuming pressure is in hPa)
+            pressure.textContent = data.list[0].main.pressure;
 
-//     //clr screen from previous?
-//     const cityInput = searchCity.value;
-//     //error /error catch for searchCity.innerText = "";
-//     const apiUrl = `https://api.openweathermap.org/data/2.5/${apiCallType}?q=${cityName}&appid=${apiKey}&units=${units}`;
+            // Update cloud percentage
+            clouds.textContent = data.list[0].clouds.all;
 
-const apiUrl = `https://api.openweathermap.org/data/2.5/${apiCallType}?q=Bristol&appid=${apiKey}&units=${units}`;
-    fetch(apiUrl)
-    .then(function (response) {
-        return response.json();
-    }).then(function (object) {
-        console.log(object);
-        cityName.innerText = object.city.name;
-        temperature.innerText = object.list[0].main.temp;
-        weather.innerText = object.list[0].weather[0].main;
+            /**
+             * 24 hour forecast parser
+             */
+            for (let w = 7; w < 40; w+=8) { 
+                const dayData = data.list[w] ;
+                /**
+                * Consts for parser
+                */
+                const dayTemp = dayData.main.temp;
+                const dayHumid = dayData.main.humidity;
+                const dayClouds = dayData.clouds.all;
+                // Generate day
+                const timeStamp = dayData.dt;
+                const dateTime = new Date(timeStamp * 1000);
+                const dayOfWeek = dateTime.toLocaleDateString("en-GB", { weekday: 'long' });
+
+                const forPop = `
+                <div class="row">
+                    <div class="column">
+                        <h4 id="dow">${dayOfWeek}</h4>
+                        <h4 id="dat">${dayTemp}<sup>o</sup></h4>
+                        <h5 id="dah">${dayHumid}<span>%</span></h5>
+                        <h5 id="dac">${dayClouds}<span>%</span></h5>
+                    </div>
+                </div>
+                `;
+                forecast.innerHTML += forPop;
+            }
+                /**
+                * Consts for HTML pipe
+                */              
+                // const accDay = document.getElementById('accordion-button');
+                // const accTmp = document.getElementById('temperaturestatus1');
+                // const accHmd = document.getElementById('humiditystatus1');
+                // const accCld = document.getElementById('cloudstate1');
+                           
+                          
+                // Update daily temp 
+                // accTmp.textContent = dayTemp;
+                // Update daily humidity
+                // accHmd.textContent = dayHumid;
+                // Update daily cloud percentage
+                // accCld.textContent = dayClouds;
+                //Update Day
+                // accDay.textContent = dayOfWeek;         
+                
+        } else {
+            // false if cod != 200
+            //run the error effect
+            main.classList.add('error');
+            // set time out so after 1 sec main clear the error and if new error came it runs the animation again 
+            setTimeout(() => {
+                main.classList.remove('error');
+            }, 1000);
+        }
+        // clear input contant 
+        searchValue.value = '' ;
     });
+}
+
+// Function to map weather conditions to background images and descriptions
+const getWeatherDetails = (weatherDescription) => {
+    switch(weatherDescription) {
+        case 'clear sky':
+            return {
+                backgroundImage: 'assets/images/sunny_scaled.jpg',
+                description: 'Clear sky'
+            };
+        case 'few clouds':
+        case 'scattered clouds':
+        case 'broken clouds':
+        case 'overcast clouds':
+            return {
+                backgroundImage: 'assets/images/cloudy_scaled.jpg',
+                description: 'Cloudy'
+            };
+        case 'shower rain':
+        case 'rainy':
+        case 'thunderstorm':
+        case 'light rain':
+        case 'moderate rain':
+        case 'heavy intensity rain':
+            return {
+                backgroundImage: 'assets/images/rain_scaled.jpg',
+                description: 'Rainy'
+            };
+        case 'snow':
+        case 'mist':
+            return {
+                backgroundImage: 'assets/images/snow_scaled.jpg',
+                description: 'Snowy'
+            };
+        default:
+            return {
+                backgroundImage: 'assets/images/default_weather.jpg',
+                description: 'Unknown weather'
+            };
+    }
+}
+
+// for when a user enter the app for first time should find london data displayed 
+
+const initApp = () => {
+    searchValue.value = "London"
+    searchWeather();
+}
+initApp();
 
