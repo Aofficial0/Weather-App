@@ -27,6 +27,8 @@ let url = 'https://api.openweathermap.org/data/2.5/forecast?units=metric&appid='
 
 // Function to search for weather data based on user input
 const searchWeather = () => {
+    // Clear Forecast
+    forecast.innerHTML = ""; 
     // Fetch weather data from the API, appending the user-provided search value to the URL
     fetch(url + '&q=' + searchValue.value)
     .then(response => response.json()) // Parse the response as JSON
@@ -70,11 +72,13 @@ const searchWeather = () => {
                 const dayOfWeek = dateTime.toLocaleDateString("en-GB", { weekday: 'long' });
 
                 const forPop = `
-                <div class="col">
-                    <h4 id="dow">${dayOfWeek}</h4>
-                    <h4 id="dat">${dayTemp}<sup>o</sup></h4>
-                    <h5 id="dah">${dayHumid}<span>%</span></h5>
-                    <h5 id="dac">${dayClouds}<span>%</span></h5>
+                <div class="row">
+                    <div class="column">
+                        <h4 id="dow">${dayOfWeek}</h4>
+                        <h4 id="dat">${dayTemp}<sup>o</sup></h4>
+                        <h5 id="dah">${dayHumid}<span>%</span></h5>
+                        <h5 id="dac">${dayClouds}<span>%</span></h5>
+                    </div>
                 </div>
                 `;
                 forecast.innerHTML += forPop;
