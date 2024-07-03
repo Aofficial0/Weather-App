@@ -19,6 +19,8 @@
  The home page displays the weather data based on the country/city entered by the user. This will also show the humidity, cloud and pressure level for that day as well as a five day weather forecast for the weekdays. 
 
 # Backgroundcolor Change
+![alt text](<Rainy Background.png>)
+![alt text](<Sunny Background.png>)
  Another feature is for the background color to change based on the weatherforecast for the day. For example, if the weather is sunny the background will display the corresponding image, likewise for any other weather forecast. 
 
 # Error feature
@@ -56,3 +58,5 @@ The use of stackoverflow for some functions and css
 The SME session where Kevin went through the Api process : https://www.youtube.com/watch?v=MIYQR-Ybrn4    -    https://www.youtube.com/watch?v=JubKY5p3qRc    -    https://drive.google.com/file/d/1LxVOMefAc6boCBU9_2aK25mnCCCdf_o0/view?ts=6681c57e
 
 Mozilla.org to get DOM elements: https://developer.mozilla.org/ 
+
+The use of coolors to get the color combination we used: https://coolors.co/ffffff-222823-cd9fcc-0e34a0
