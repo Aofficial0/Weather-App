@@ -47,7 +47,19 @@
     padding: 10px 25px 10px 25px;
   }
 
+
   /* OpenWeather Link */
+  #owlabel {
+    color: #CD9FCC;
+    position: fixed;
+    padding: 10px 15px 10px 25px;
+    bottom: 4rem;
+    right: 0;
+    width: 150px;
+    border: 0px ;
+    z-index: 3;
+  }
+
   #openweather {
     position: fixed;
     padding: 10px 15px 10px 25px;
@@ -70,7 +82,7 @@
     #github {
       display: none;
     }
-    #openweather {
+    #openweather, #owlabel {
       display: none;
     }
   }  
