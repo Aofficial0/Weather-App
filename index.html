@@ -22,19 +22,19 @@
     <a href="https://github.com/Aofficial0/Weather-App" target="_blank" class="btn btn-dark" id="github"><i class="fa-brands fa-github"></i></a>
 
     <main class="app">
-        <form action="">
+        <form>
             <input type="text" id="location" placeholder="Enter city" autocomplete="off">
             <button id="get-weather">
                 <i class="fa-solid fa-magnifying-glass"></i>
             </button>
         </form>
 
-        <section class="result">
+        <div class="result">
             <figure class="name" id="city">
                 <!-- flag api for the flags  -->
                 <figcaption>London</figcaption>
-            <img src="https://flagsapi.com/GB/shiny/32.png" alt="flag">
-        </figure>
+                <img src="https://flagsapi.com/GB/shiny/32.png" alt="flag">
+              </figure>
                 <!-- using the open weather icons  -->
         <figure class="temp" id="temperature">
             <img src="https://openweathermap.org/img/wn/10d@2x.png" alt="">
@@ -66,83 +66,10 @@
                 <span id="pressure">1001</span>hPa
             </li>
         </ul>
-        </section>
-
-      <!-- <div class="accordion" id="WeatherAccordion">
-        <div class="accordion-item">
-                <h2 class="accordion-header">
-                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                    Monday
-                  </button>
-                </h2>
-                <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
-                  <div class="accordion-body">
-                    <p class="temperaturestatus1">Temperature: </p>
-                    <p class="cloudstate1">Cloud State: </p>
-                    <p class="humiditystatus1">Humidity: </p>
-                  </div>
-                </div>
-              </div>
-              <div class="accordion-item">
-                <h2 class="accordion-header">
-                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                    Tuesday
-                  </button>
-                </h2>
-                <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                  <div class="accordion-body">
-                    <p class="temperaturestatus1">Temperature: </p>
-                    <p class="cloudstate1">Cloud State: </p>
-                    <p class="humiditystatus1">Humidity: </p>
-                  </div>
-                </div>
-              </div>
-              <div class="accordion-item">
-                <h2 class="accordion-header">
-                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                    Wednesday
-                  </button>
-                </h2>
-                <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                  <div class="accordion-body">
-                    <p class="temperaturestatus1">Temperature: </p>
-                    <p class="cloudstate1">Cloud State: </p>
-                    <p class="humiditystatus1">Humidity: </p>
-                  </div>
-                </div>
-              </div>
-              <div class="accordion-item">
-                <h2 class="accordion-header">
-                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                    Thursday
-                  </button>
-                </h2>
-                <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                  <div class="accordion-body">
-                    <p class="temperaturestatus1">Temperature: </p>
-                    <p class="cloudstate1">Cloud State: </p>
-                    <p class="humiditystatus1">Humidity: </p>
-                  </div>
-                </div>
-              </div>
-              <div class="accordion-item">
-                <h2 class="accordion-header">
-                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-                    Friday
-                  </button>
-                </h2>
-            <div id="collapseFive" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-             <div class="accordion-body">
-                    <p class="temperaturestatus1">Temperature: </p>
-                    <p class="cloudstate1">Cloud State: </p>
-                    <p class="humiditystatus1">Humidity: </p>
-             </div>
-            </div>
-        </div>
-      </div> -->
+      </div>     
       <div class="row" id="fiveday"></div>
       <div>
-        <a href="https://openweathermap.org/" target="_blank" id="openweather"><img src="assets/images/logo_white_cropped.png"></a>
+        <a href="https://openweathermap.org/" target="_blank" id="openweather"><img src="assets/images/logo_white_cropped.png" alt="Open Weather Map logo"></a>
       </div>
        
       </main>
