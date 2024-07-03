@@ -20,7 +20,7 @@ form.addEventListener('submit', (event) => {
     if(searchValue.value != ''){
         searchWeather();
     }
-})
+});
 
 // API key for OpenWeatherMap
 const key = 'e6d14a5b27f7e8a75ce9753d6de7a74b';
@@ -49,24 +49,21 @@ const searchWeather = () => {
              // Update the temperature itself
             let temp =  data.list[0].main.temp;
             let roundTemp = Math.round(temp);
-            temperature.querySelector('figcaption span').innerText = roundTemp
+            temperature.querySelector('figcaption span').innerText = roundTemp;
             // Update the weather description
             description.textContent = data.list[0].weather[0].description;
-            //let weatherDetails = getWeatherDetails(data.list[0].weather[0].description);
-            // Update background image
-            // document.body.style.backgroundImage = 'url(' + weatherDetails.backgroundImage + ')';
-            // Update description text
-            // description.innerText = weatherDetails.description;
             // Update humidity
             humidity.textContent = data.list[0].main.humidity;
             // Update pressure (assuming pressure is in hPa)
             pressure.textContent = data.list[0].main.pressure;
             // Update cloud percentage
             clouds.textContent = data.list[0].clouds.all;
-            // Set Weather descriptor for background links
-            const weatherDescriptor = data.list[0].weather[0].main;
+            /**
+             * Get Weather descriptor from JSON and apply correct background image
+             */
+            const weatherDescriptor = data.list[0].weather[0].main; // Set Weather descriptor for background links
             //console.log(weatherDescriptor); // check weatherDescriptor output
-            if (weatherDescriptor === "Clear") {
+            if (weatherDescriptor === "Clear") {  //Set background image
                 document.body.style.backgroundImage = 'url("assets/images/sunny_scaled.jpg")';
             } else if (weatherDescriptor === "Clouds") {
                 document.body.style.backgroundImage = 'url("assets/images/cloudy_scaled.jpg")';
@@ -81,12 +78,14 @@ const searchWeather = () => {
             for (let w = 7; w < 40; w+=8) { 
                 const dayData = data.list[w] ;
                 /**
-                * Consts for parser
-                */
+                 * Round temp up or down
+                 */              
                 let dtemp =  dayData.main.temp;
                 let droundTemp = Math.round(dtemp);
+                /**
+                * Consts for parser
+                */
                 const dayTemp = droundTemp;
-
                 const dayHumid = dayData.main.humidity;
                 const dayClouds = dayData.clouds.all;
                 // Generate day
@@ -118,13 +117,13 @@ const searchWeather = () => {
         // clear input contant 
         searchValue.value = '' ;
     });
-}
+};
 
 // for when a user enter the app for first time should find london data displayed 
 
 const initApp = () => {
-    searchValue.value = "London"
+    searchValue.value = "London";
     searchWeather();
-}
+};
 initApp();
 
