@@ -1,3 +1,4 @@
+"use strict";
 // get all the html needed for the api  by ID
 
 const searchValue = document.getElementById('location');
