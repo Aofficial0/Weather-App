@@ -26,6 +26,50 @@ const key = 'e6d14a5b27f7e8a75ce9753d6de7a74b';
 // Base URL for the OpenWeatherMap API, with units set to metric
 const url = 'https://api.openweathermap.org/data/2.5/forecast?units=metric&appid=' + key;
 
+
+// Function to map weather conditions to background images and descriptions
+const getWeatherDetails = (weatherDescription) => {
+    switch(weatherDescription) {
+        case 'clear sky':
+            return {
+                backgroundImage: 'assets/images/sunny_scaled.jpg',
+                description: 'Clear sky'
+            };
+        case 'few clouds':
+        case 'scattered clouds':
+        case 'broken clouds':
+        case 'overcast clouds':
+            return {
+                backgroundImage: 'assets/images/cloudy_scaled.jpg',
+                description: 'Cloudy'
+            };
+        case 'shower rain':
+        case 'rainy':
+        case 'thunderstorm':
+        case 'light rain':
+        case 'moderate rain':
+        case 'heavy intensity rain':
+            return {
+                backgroundImage: 'assets/images/rain_scaled.jpg',
+                description: 'Rainy'
+            };
+        case 'snow':
+        case 'mist':
+            return {
+                backgroundImage: 'assets/images/snow_scaled.jpg',
+                description: 'Snowy'
+            };
+        default:
+            return {
+                backgroundImage: 'assets/images/default_weather.jpg',
+                description: 'Unknown weather'
+            };
+    }
+}
+
+
+
+
 // Function to search for weather data based on user input
 const searchWeather = () => {
     // Clear Forecast
@@ -46,7 +90,11 @@ const searchWeather = () => {
              //updated the temperature itself  
             temperature.querySelector('figcaption span').innerText = data.list[0].main.temp;
             // update the temperature description
-            description.innerText = data.list[0].weather[0].description;
+            let weatherDetails = getWeatherDetails(data.list[0].weather[0].description);
+            // Update background image
+            document.body.style.backgroundImage = 'url(' + weatherDetails.backgroundImage + ')';
+            // Update description text
+            description.innerText = weatherDetails.description;
             // Update humidity
             humidity.textContent = data.list[0].main.humidity;
 
@@ -116,45 +164,6 @@ const searchWeather = () => {
     });
 }
 
-// Function to map weather conditions to background images and descriptions
-const getWeatherDetails = (weatherDescription) => {
-    switch(weatherDescription) {
-        case 'clear sky':
-            return {
-                backgroundImage: 'assets/images/sunny_scaled.jpg',
-                description: 'Clear sky'
-            };
-        case 'few clouds':
-        case 'scattered clouds':
-        case 'broken clouds':
-        case 'overcast clouds':
-            return {
-                backgroundImage: 'assets/images/cloudy_scaled.jpg',
-                description: 'Cloudy'
-            };
-        case 'shower rain':
-        case 'rainy':
-        case 'thunderstorm':
-        case 'light rain':
-        case 'moderate rain':
-        case 'heavy intensity rain':
-            return {
-                backgroundImage: 'assets/images/rain_scaled.jpg',
-                description: 'Rainy'
-            };
-        case 'snow':
-        case 'mist':
-            return {
-                backgroundImage: 'assets/images/snow_scaled.jpg',
-                description: 'Snowy'
-            };
-        default:
-            return {
-                backgroundImage: 'assets/images/default_weather.jpg',
-                description: 'Unknown weather'
-            };
-    }
-}
 
 // for when a user enter the app for first time should find london data displayed 
 
